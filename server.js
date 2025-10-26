@@ -1,7 +1,7 @@
-const http = require('http')
+const https = require('https')
 const fs = require('fs')
 const writeStream = fs.createWriteStream('out.txt', { flags: 'a' })
-const server = http.createServer((req, res) => {
+const server = https.createServer((req, res) => {
 	if(req.method === 'POST' && req.url === '/data'){
 		let body = ''
 		req.on('data', c => body += c.toString())
@@ -14,4 +14,7 @@ const server = http.createServer((req, res) => {
 		})
 	}
 })
-server.listen(3030, () => console.log('Server Started'))
+server.listen({
+	port: 3030,
+		
+}, () => console.log('Server Started'))
